@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+/webDataScience/*/migrations
+/webDataScience/param_init.json
+/dasifo/*
