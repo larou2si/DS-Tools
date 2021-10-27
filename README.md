@@ -25,6 +25,8 @@ pip3 install -r requirements.txt
 
 ## Sync and Running application
 ```
+rename the example-param_init.json to param_init.json
+    modify its values by your database configuration
 # "python3 manage.py name_of_command"
 cd data-management-solution
 python3 manage.py makemigrations
@@ -34,3 +36,6 @@ python3 manage.py runserver
 ```
 ## Support
 For any issue with the application, drop a message via mohamed.laroussi.1@esprit.tn
+
+thanks to codescandy for the amazing html Template:
+https://github.com/codescandy/Dash-UI
