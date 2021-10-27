@@ -1,0 +1,8 @@
+{
+  "DS_DATABASE_HOST": "localhost",
+  "DS_DATABASE_PORT": "5432",
+  "DS_DATABASE_USER": "larou2si",
+  "DS_DATABASE_PASS": "",
+  "DS_DATABASE_NAME": "ds_tools_2021",
+  "DS_DATABASE_ENGINE": "django.db.backends.postgresql_psycopg2"
+}
