@@ -30,6 +30,6 @@ Used for read-write-delete endpoints to represent a single model instance.
 """
 
 class DSProjectList(generics.ListCreateAPIView):
-    queryset = DSProject.objects.using('users_db').all()
+    queryset = DSProject.objects.all()
     serializer_class = DSProjectSerializer
 

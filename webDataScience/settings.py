@@ -88,14 +88,15 @@ WSGI_APPLICATION = 'webDataScience.wsgi.application'
 paramsFile = json.load(open(os.path.join(BASE_DIR, 'param_init.json')))
 DATABASES = {
     # 'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': BASE_DIR / 'db.sqlite3',}
-    'default': {},
-    'users_db': {
-        'ENGINE': paramsFile["DS_DATABASE_ENGINE"],
-        'PORT': paramsFile["DS_DATABASE_PORT"],
-        'HOST': paramsFile["DS_DATABASE_HOST"],
-        'NAME': paramsFile["DS_DATABASE_NAME"],
-        'USER': paramsFile["DS_DATABASE_USER"],
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'ec2-54-154-101-45.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd7aqifgop84ff4',
+        'USER': "bciaszuamqfqif",
+        'PASSWORD': '7d4cc6a078cedd3d498bd887a5dd5e897ec68f0bf326c039f80aaa4965a62a1e',
+        'PORT': '5432',
     },
+    'users_db': {},
 }
 
 # Password validation
