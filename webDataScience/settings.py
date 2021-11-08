@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # we put our new apps created down here
-    'appDS.apps.AppdsConfig'
+    'appDS.apps.AppdsConfig',
+    'appUser.apps.AppuserConfig',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,7 @@ DATABASES = {
         'PASSWORD': '7d4cc6a078cedd3d498bd887a5dd5e897ec68f0bf326c039f80aaa4965a62a1e',
         'PORT': '5432',
     },
-    'users_db': {},
+    #'users_db': {},
 }
 
 # Password validation
@@ -141,14 +142,19 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+# login : athentification
+LOGIN_REDIRECT_URL = 'dsuser:user-login'
+LOGOUT_REDIRECT_URL = 'dsuser:user-logout'
+LOGIN_URL = 'dsuser:user-login'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DATABASE_ROUTERS = [
-    'routers.db_routers.AuthRouter'
-]
+# DATABASE_ROUTERS = ['routers.db_routers.AuthRouter']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

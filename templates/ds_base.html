@@ -7,19 +7,11 @@
   </head>
 
   <body>
-    <div id="db-wrapper">
-      <!-- navbar vertical -->
-      {% include 'partials/navbar-vertical.html' %}
-       <!-- Page content -->
-      <div id="page-content">
-        {% include 'partials/header.html' %}
-        <!-- Container fluid -->
-        <div class="bg-primary pt-10 pb-21"></div>
-          {% block content %}
-          {% endblock content %}
-      </div>
-    </div>
 
+          {% block content %}
+
+
+          {% endblock content %}
     <!-- Scripts -->
     {% include 'partials/scripts.html' %}
 
