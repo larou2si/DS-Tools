@@ -4,6 +4,14 @@
   "DS_DATABASE_USER": "larou2si",
   "DS_DATABASE_PASS": "",
   "DS_DATABASE_NAME": "ds_tools_2021",
-  "DS_DATABASE_ENGINE": "django.contrib.gis.db.backends.postgis"
+  "DS_DATABASE_ENGINE": "django.contrib.gis.db.backends.postgis",
+
+
+  "DS_EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+  "DS_EMAIL_HOST": "smtp.gmail.com",
+  "DS_EMAIT_PORT": "587",
+  "DS_EMAIL_USE_TLS": "True",
+  "DS_EMAIL_HOST_USER": "larou2si.dev@gmail.com",
+  "DS_EMAIL_HOST_PASSWORD": "DS_l@rou#2021"
 
 }
