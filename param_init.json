@@ -4,6 +4,6 @@
   "DS_DATABASE_USER": "larou2si",
   "DS_DATABASE_PASS": "",
   "DS_DATABASE_NAME": "ds_tools_2021",
-  "DS_DATABASE_ENGINE": "django.db.backends.postgresql_psycopg2",
+  "DS_DATABASE_ENGINE": "django.contrib.gis.db.backends.postgis",
 
 }
