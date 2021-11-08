@@ -1,64 +1,103 @@
-{% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="{% static 'images/img-01.png' %}" alt="IMG">
+				</div>
 
-  <div class="container d-flex flex-column">
-    <div class="row align-items-center justify-content-center g-0
-        min-vh-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
-        <!-- Card -->
-        <div class="card smooth-shadow-md">
-          <!-- Card body -->
-          <div class="card-body p-6">
-            <div class="mb-4">
-              <a href="../index.html"><img src="{% static 'assets/images/brand/logo/logo-primary.svg' %}" class="mb-2" alt=""></a>
-              <p class="mb-6">Please enter your user information.</p>
-            </div>
-            <!-- Form -->
-            <form action="{% url 'dsuser:user-login' %}" method="post">
-            {% csrf_token %}
-              <!-- Username -->
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" id="username" class="form-control" name="username" placeholder="User Name here" required="">
-              </div>
-              <!-- Password -->
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" class="form-control" name="password" placeholder="**************" required="">
-              </div>
-              <!-- Checkbox -->
-              <div class="d-lg-flex justify-content-between align-items-center
-                  mb-4">
-                <div class="form-check custom-checkbox">
-                  <input type="checkbox" class="form-check-input" id="rememberme">
-                  <label class="form-check-label" for="rememberme">Remember
-                      me</label>
-                </div>
+				<form class="login100-form validate-form" action="{% url 'dsuser:user-login' %}" method="post">
+            		{% csrf_token %}
+					<span class="login100-form-title">
+						If you are a simple visitor just click on login button!
+					</span>
 
-              </div>
-              <div>
-                <!-- Button -->
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
+					<div class="wrap-input100 validate-input" data-validate = "Username is required">
+						<input class="input100" type="text" name="username" placeholder="Username" value="visitor">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
 
-                <div class="d-md-flex justify-content-between mt-4">
-                  <div class="mb-2 mb-md-0">
-                    <a href="sign-up.html" class="fs-5">Create An Account </a>
-                  </div>
-                  <div>
-                    <a href="forget-password.html" class="text-inherit fs-5">Forgot your password?</a>
-                  </div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password" value="rootroot">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
 
-                </div>
-              </div>
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="#">
+							Username / Password?
+						</a>
+					</div>
 
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
 
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
 
-{% endblock content %}
+</body>
+</html>

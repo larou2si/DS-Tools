@@ -1,9 +1,10 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from rest_framework import generics
+from django.views.decorators.cache import cache_control
 
 
 def user_login(request):
@@ -25,10 +26,15 @@ def user_login(request):
     return render(request, 'login.html')
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def user_logout(request):
-    # todo
-    pass
+    logout(request)
+    return redirect('dsuser:user-login')
 
+
+
+# make APIs
 class UserAuthentification(): # generics.RetrieveUpdateAPIView
     # todo
     pass
