@@ -1,8 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.views.decorators.cache import cache_control
 from rest_framework import generics
 from .serializers import DSProject, DSProjectSerializer
 # Create your views here.
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def dashboard(request):
     return render(request, 'index.html')
 

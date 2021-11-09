@@ -3,13 +3,13 @@
  <nav class="navbar-vertical navbar">
     <div class="nav-scroller">
         <!-- Brand logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'ds:dashboard' %}">
             <img src="{% static 'assets/images/brand/logo/logo.svg' %}" alt="" />
         </a>
         <!-- Navbar nav -->
         <ul class="navbar-nav flex-column" id="sideNavbar">
             <li class="nav-item">
-                <a class="nav-link has-arrow active " href="#">
+                <a class="nav-link has-arrow active " href="{% url 'ds:dashboard' %}">
                     <i data-feather="home" class="nav-icon icon-xs me-2"></i>  Data Science
                 </a>
 
