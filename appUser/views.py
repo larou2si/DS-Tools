@@ -94,7 +94,7 @@ def user_logout(request):
 
 
 def campdashboard(request):
-    return render(request, "campdashboard.html")
+    return render(request, "campDashboard.html")
 
 def poke_me(request):
     user = User.objects.get(id=request.GET['prf'])
