@@ -3,12 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import View
 
+from .models import Profile, Poke
 from .tokens import account_activation_token
 from django.views.decorators.cache import cache_control
 from .forms import SignUpForm
@@ -26,15 +28,15 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect('ds:dashboard')
+                return redirect('dsuser:campdashboard')
             else:
-                messages.error(request, 'Wrong username or password!')
+                messages.error(request, 'User is not Active anymore!')
                 return redirect('dsuser:user-login')
         else:
             messages.error(request, 'Wrong username or password!')
             return redirect('dsuser:user-login')
-
     return render(request, 'login.html')
+
 
 def user_signup(request):
     form = SignUpForm(request.POST)
@@ -48,6 +50,7 @@ def user_signup(request):
             user.is_superuser = False
             user.is_staff = False
             user.save()
+
 
             current_site = get_current_site(request)
             subject = 'Activate Your MySite Account'
@@ -90,8 +93,17 @@ def user_logout(request):
     return redirect('dsuser:user-login')
 
 
+def campdashboard(request):
+    return render(request, "campdashboard.html")
+
+def poke_me(request):
+    user = User.objects.get(id=request.GET['prf'])
+    poke = Poke(author=request.user, poked=user)
+    poke.save()
+    return JsonResponse({'pokes':user.profile.pokes()}, status=200)
 
 # make APIs
 class UserAuthentification(): # generics.RetrieveUpdateAPIView
     # todo
     pass
+

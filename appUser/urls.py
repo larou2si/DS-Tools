@@ -4,6 +4,8 @@ from .views import *
 app_name = 'dsuser'
 urlpatterns = [
     path('', user_login, name='user-login'),
+    path('pokes/', campdashboard, name='campdashboard'),
+    path('pokemeup/', poke_me, name='poke-me'),
     path('signup', user_signup, name='user-signup'),
     path('out/', user_logout, name='user-logout'),
     path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),

@@ -37,7 +37,14 @@
 						Registration
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
+					<div class="wrap-input100 validate-input" data-validate = "Name is required">
+                        {{ form.first_name }}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Alias is required">
                         {{ form.username }}
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -61,10 +68,19 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password2" placeholder="Password">
+						{{ form.password2 }}
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate = "Birthday Date">
+						{{ form.date }}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-calendar" aria-hidden="true"></i>
 						</span>
 					</div>
 					

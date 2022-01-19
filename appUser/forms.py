@@ -4,18 +4,17 @@ from django.contrib.auth.models import User
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text='Optional')
-    last_name = forms.CharField(max_length=30, required=False, help_text='Optional')
-    username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'class': 'input100', 'required': True}))
-    email = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'class': 'input100',
-                            'help_text': 'Enter a valid email address', 'required': True}))
+    first_name = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'class': 'input100',
+                                'placeholder': "Name", 'required': True}))
+    username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'class': 'input100',
+                                'placeholder': "Alias", 'required': True}))
+    email = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'class': 'input100', 'type':'email',
+                        'placeholder': "Email", 'help_text': 'Enter a valid email address', 'required': True}))
     password1 = forms.CharField(max_length=254, widget=forms.PasswordInput(attrs={'class': 'input100',
                             'placeholder': "Password", 'required': True}))
     password2 = forms.CharField(max_length=254, widget=forms.PasswordInput(attrs={'class': 'input100',
-                            'placeholder': "Password", 'required': True}))
+                            'placeholder': "Confirm Password", 'required': True}))
+    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'input100', 'type':'date', 'required': True}))
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2',]
-        widgets = {
-            '': forms.TextInput(attrs={'class': 'input100', 'placeholder': 'Enter your username'}),
-        }
+        fields = ['username', 'first_name', 'email', 'password1', 'password2',]
