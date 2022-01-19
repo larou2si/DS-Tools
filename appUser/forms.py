@@ -13,8 +13,9 @@ class SignUpForm(UserCreationForm):
     password1 = forms.CharField(max_length=254, widget=forms.PasswordInput(attrs={'class': 'input100',
                             'placeholder': "Password", 'required': True}))
     password2 = forms.CharField(max_length=254, widget=forms.PasswordInput(attrs={'class': 'input100',
-                            'placeholder': "Confirm Password", 'required': True}))
-    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'input100', 'type':'date', 'required': True}))
+                            'placeholder': "Confirm Password", 'required': True, 'onfocusout': "samePassword()"}))
+    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'input100', 'type': 'date',
+                            'placeholder': "Date of Birth", 'required': True}))
     class Meta:
         model = User
         fields = ['username', 'first_name', 'email', 'password1', 'password2',]

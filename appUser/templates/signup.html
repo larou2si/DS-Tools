@@ -74,6 +74,9 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<label id="main_error" class="wrap-input100 label-info"></label>
+					</div>
 
 
 					<div class="wrap-input100 validate-input" data-validate = "Birthday Date">
@@ -86,7 +89,7 @@
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Sign Up
+							Register
 						</button>
 					</div>
 
@@ -120,6 +123,24 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{% static 'js/main.js' %}"></script>
+<script>
+	function samePassword() {
+		if(document.getElementById('id_password1').value=='' | document.getElementById('id_password2').value==''){
+			document.getElementById('main_error').style.color = 'red';
+			document.getElementById('main_error').innerHTML = 'Password is Required!';
+		}
+		else if (document.getElementById('id_password1').value ==
+			document.getElementById('id_password2').value) {
+			document.getElementById('main_error').style.color = 'green';
+			document.getElementById('main_error').innerHTML = 'Password matching';
+		  } else {
+			document.getElementById('id_password1').style.color = 'red';
+			document.getElementById('id_password2').style.color = 'red';
+			document.getElementById('main_error').style.color = 'red';
+			document.getElementById('main_error').innerHTML = 'Password not matching';
+		  }
+	}
+</script>
 
 </body>
 </html>

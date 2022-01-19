@@ -12,6 +12,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     image = models.ImageField(default='defaultprofile.jpg', upload_to='profile_pics')
     email_confirmed = models.BooleanField(default=False)
+    birthdate = models.DateTimeField(blank=True, null=True)
 
     # role = manager, supermanager, simpleUser, superadmin
     def __str__(self):
