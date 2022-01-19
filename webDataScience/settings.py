@@ -86,7 +86,6 @@ WSGI_APPLICATION = 'webDataScience.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-paramsFile = json.load(open(os.path.join(BASE_DIR, 'param_init.json')))
 DATABASES = {
     # 'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': BASE_DIR / 'db.sqlite3',}
     'default': {
