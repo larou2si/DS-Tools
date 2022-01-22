@@ -22,7 +22,7 @@ from .forms import SignUpForm
 
 def user_login(request):
     if request.method == 'GET' and request.user and request.user.is_active:
-        return redirect('ds:dashboard')
+        return redirect('dsuser:campdashboard')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -42,8 +42,9 @@ def user_login(request):
 
 def user_signup(request):
     form = SignUpForm(request.POST)
+    context = {'form': form}
     if request.method == 'GET':
-        return render(request, 'signup.html', {'form': form})
+        return render(request, 'signup.html', context=context)
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         print(form.error_messages)
@@ -69,8 +70,10 @@ def user_signup(request):
             #user.email_user(subject, message)
             messages.success(request, 'Please Confirm your email to complete registration.')
             return redirect('dsuser:user-login')
+        else:
+            context['error'] = form.error_messages
 
-        return render(request, 'signup.html', {'form': form})
+        return render(request, 'signup.html', context=context)
 
 
 class ActivateAccount(View):
@@ -100,7 +103,15 @@ def user_logout(request):
 
 
 def campdashboard(request):
-    return render(request, "campDashboard.html")
+    pokes = Poke.objects.filter(poked=request.user, viewed=None).all()
+    for poke in pokes:
+        poke.viewed = datetime.datetime.now()
+        poke.save()
+    data = {}
+    if pokes.count() > 0:
+        data['ncount'] = pokes.count()
+        data['my_pokes'] = pokes
+    return render(request, "campDashboard.html", context=data)
 
 def poke_me(request):
     user = User.objects.get(id=request.GET['prf'])

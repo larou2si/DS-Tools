@@ -36,7 +36,13 @@
 					<span class="login100-form-title">
 						Registration
 					</span>
-
+					{% if error %}
+					{% for v in error.values %}
+						<div class="alert alert-danger" role="alert">
+                          {{ v }}
+                        </div>
+						{% endfor %}
+					{% endif %}
 					<div class="wrap-input100 validate-input" data-validate = "Name is required">
                         {{ form.first_name }}
 						<span class="focus-input100"></span>
