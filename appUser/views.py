@@ -22,7 +22,7 @@ from .forms import SignUpForm
 
 def user_login(request):
     if request.method == 'GET' and request.user and request.user.is_active:
-        return redirect('dsuser:campdashboard')
+        return redirect('dsserver:dashboard')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -30,7 +30,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect('dsuser:campdashboard')
+                return redirect('dsserver:dashboard')
             else:
                 messages.error(request, 'User is not Active anymore!')
                 return redirect('dsuser:user-login')
@@ -53,21 +53,20 @@ def user_signup(request):
             user.is_active = False  # Deactivate account till it is confirmed
             user.is_superuser = False
             user.is_staff = False
-            print(type(form.cleaned_data['date']),form.cleaned_data['date'])
             user.save()
             user.profile.birthdate = form.cleaned_data['date']
 
             user.profile.save()
 
-            #current_site = get_current_site(request)
-            #subject = 'Activate Your MySite Account'
-            #message = render_to_string('account_activation_email.html', {
-            #    'user': user,
-            #    'domain': current_site.domain,
-            #    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            #    'token': account_activation_token.make_token(user),
-            #})
-            #user.email_user(subject, message)
+            current_site = get_current_site(request)
+            subject = 'Activate Your MySite Account'
+            message = render_to_string('account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+            })
+            user.email_user(subject, message)
             messages.success(request, 'Please Confirm your email to complete registration.')
             return redirect('dsuser:user-login')
         else:
@@ -90,7 +89,7 @@ class ActivateAccount(View):
             user.save()
             login(request, user)
             messages.success(request, 'Your account have been confirmed.')
-            return redirect('ds:dashboard')
+            return redirect('dsserver:dashboard')
         else:
             messages.warning(request, 'The confirmation link was invalid, possibly because it has already been used.')
             return redirect('dsuser:user-signup')

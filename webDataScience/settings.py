@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # we put our new apps created down here
     'appDS.apps.AppdsConfig',
     'appUser.apps.AppuserConfig',
+    'appServers.apps.AppserversConfig',
 ]
 
 MIDDLEWARE = [
@@ -88,14 +89,22 @@ WSGI_APPLICATION = 'webDataScience.wsgi.application'
 
 DATABASES = {
     # 'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': BASE_DIR / 'db.sqlite3',}
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'HOST': 'ec2-54-154-101-45.eu-west-1.compute.amazonaws.com',
+    #    'NAME': 'd7aqifgop84ff4',
+    #    'USER': "bciaszuamqfqif",
+    #    'PASSWORD': '7d4cc6a078cedd3d498bd887a5dd5e897ec68f0bf326c039f80aaa4965a62a1e',
+    #    'PORT': '5432',
+    #},
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'ec2-54-154-101-45.eu-west-1.compute.amazonaws.com',
-        'NAME': 'd7aqifgop84ff4',
-        'USER': "bciaszuamqfqif",
-        'PASSWORD': '7d4cc6a078cedd3d498bd887a5dd5e897ec68f0bf326c039f80aaa4965a62a1e',
+        'HOST': 'ec2-18-235-114-62.compute-1.amazonaws.com',
+        'NAME': 'd9abgbsasc3mpe',
+        'USER': "pkqjwkdgmcceik",
+        'PASSWORD': 'd66851a8f188d560385ff2f2bf3743ceab023cc2b0c5d3eb78c12a73753960a1',
         'PORT': '5432',
-    },
+    }
     #'users_db': {},
 }
 
